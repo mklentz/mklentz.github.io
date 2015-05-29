@@ -61,55 +61,62 @@
         <h3>
 <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to My Page.</h3>
 
-    <div class="container" style="margin-top:10em;">
-        
-        <div class="col-lg-8 col-lg-offset-2 well">
-            <h1 class="text-center">Simple calculator</h1>
-            <hr />
-            <form id="form1" runat="server" class="form-horizontal"  autocomplete="off">
-              <div class="form-group">
-                <div class="col-sm-6">
-                  <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control input-lg" placeholder="NUMBER e.g. 1337"></asp:TextBox>
-                  <p style="margin-top:5px;">
-                    <asp:RegularExpressionValidator ID="RegularExpressionValidator2" runat="server" ErrorMessage="* Must be less than 5 digits" CssClass="text-danger" ControlToValidate="TextBox1" ValidationExpression="^\d{1,5}$" Display="Dynamic"></asp:RegularExpressionValidator>
-                    <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"  ErrorMessage="* Required Field" CssClass="text-danger" ControlToValidate="TextBox1" Display="Dynamic"></asp:RequiredFieldValidator>
-                  </p>
-                </div>
-                <div class="col-sm-6">
-                  <asp:TextBox ID="TextBox2" runat="server" CssClass="form-control input-lg" placeholder="NUMBER e.g. 2108"></asp:TextBox>
-                  <p style="margin-top:5px;">
-                      <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" ErrorMessage="* Must be less than 5 digits" CssClass="text-danger" ControlToValidate="TextBox2" ValidationExpression="^\d{1,5}$" Display="Dynamic"></asp:RegularExpressionValidator>
-                      <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server"  ErrorMessage="* Required Field" CssClass="text-danger" ControlToValidate="TextBox2" Display="Dynamic"></asp:RequiredFieldValidator>
-                  </p>
-                </div>
-              </div>
-              <hr />
-              <div class="form-group">
-                <div class="col-sm-3">
-                  <asp:Button ID="Button1" runat="server" Text="+ Add" CssClass="btn-primary btn btn-block" OnClick="Button1_Click" />
-                </div>
-                <div class="col-sm-3">
-                  <asp:Button ID="Button2" runat="server" Text="- Subtract" CssClass="btn-primary btn btn-block" OnClick="Button2_Click1" />
-                </div>
-                <div class="col-sm-3">
-                  <asp:Button ID="Button3" runat="server" Text="/ Divide" CssClass="btn-primary btn btn-block" OnClick="Button3_Click1" />
-                </div>
-                <div class="col-sm-3">
-                  <asp:Button ID="Button4" runat="server" Text="* Multiply" CssClass="btn-primary btn btn-block" OnClick="Button4_Click" />
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="col-sm-9">
-                  <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control input-lg" placeholder="Result" disabled="true"></asp:TextBox>
-                </div>
-                <div class="col-sm-3">
-                  <asp:Button ID="Button5" runat="server" Text="Clear" CausesValidation="false" CssClass="btn-danger btn btn-block btn-lg" OnClick="Button5_Click1" />
-                </div>
-              </div>
-            </form>
-        </div>
-    </div>
-    
+<body ng-app="multApp">
+    <!--[if lt IE 7]>
+      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
+
+    <!--[if lt IE 9]>
+      <script src="bower_components/es5-shim/es5-shim.js"></script>
+      <script src="bower_components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <a href = "#mult" class = "btn btn-danger"> Multiply </a>
+    <a href = "#add" class = "btn btn-info"> Add </a>
+    <a href = "#/" class = "btn btn-primary" > Main </a>
+    <a href = "#/calculate" class = "btn btn-primary" > Calculator </a>
+    <!-- Add your site or application content here -->
+    <div class="container" ng-view=""></div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+      g.src='//www.google-analytics.com/ga.js';
+      s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
+
+    <script src="bower_components/angular/angular.js"></script>
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/services/math.services.js"></script>
+    <!-- endbuild -->
+
+        <!-- build:js scripts/plugins.js -->
+        <script src="bower_components/jquery/jquery.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-affix.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-alert.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-dropdown.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-tooltip.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-modal.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-transition.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-button.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-popover.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-typeahead.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-carousel.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-scrollspy.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-collapse.js"></script>
+        <script src="bower_components/bootstrap-sass/js/bootstrap-tab.js"></script>
+        <!-- endbuild -->
+
+        <!-- build:js scripts/modules.js -->
+        <script src="bower_components/angular-resource/angular-resource.js"></script>
+        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <!-- endbuild -->
+
 <h3>
 <a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Heading</h3>
 
@@ -138,5 +145,6 @@
     
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  </body>
   </body>
 </html>
