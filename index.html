@@ -61,61 +61,42 @@
         <h3>
 <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to My Page.</h3>
 
-<body ng-app="multApp">
-    <!--[if lt IE 7]>
-      <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-    <![endif]-->
-
-    <!--[if lt IE 9]>
-      <script src="bower_components/es5-shim/es5-shim.js"></script>
-      <script src="bower_components/json3/lib/json3.min.js"></script>
-    <![endif]-->
-
-    <a href = "#mult" class = "btn btn-danger"> Multiply </a>
-    <a href = "#add" class = "btn btn-info"> Add </a>
-    <a href = "#/" class = "btn btn-primary" > Main </a>
-    <a href = "#/calculate" class = "btn btn-primary" > Calculator </a>
-    <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
-
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-      (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-      g.src='//www.google-analytics.com/ga.js';
-      s.parentNode.insertBefore(g,s)}(document,'script'));
-    </script>
-
-    <script src="bower_components/angular/angular.js"></script>
-
-    <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <script src="scripts/app.js"></script>
-    <script src="scripts/controllers/main.js"></script>
-    <script src="scripts/services/math.services.js"></script>
-    <!-- endbuild -->
-
-        <!-- build:js scripts/plugins.js -->
-        <script src="bower_components/jquery/jquery.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-affix.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-alert.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-dropdown.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-tooltip.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-modal.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-transition.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-button.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-popover.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-typeahead.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-carousel.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-scrollspy.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-collapse.js"></script>
-        <script src="bower_components/bootstrap-sass/js/bootstrap-tab.js"></script>
-        <!-- endbuild -->
-
-        <!-- build:js scripts/modules.js -->
-        <script src="bower_components/angular-resource/angular-resource.js"></script>
-        <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-        <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-        <!-- endbuild -->
+<body>
+ <div id="display"><div></div></div>
+    <div id="panel">
+      <div class="x-row">
+        <input type="button" class="double-x" value="C" data-type="command" />
+        <input type="button" class="small" value="÷" id="add" data-type="operator" />
+        <input type="button" class="small" value="×" id="multiply" data-type="operator" />
+      </div>
+      <div class="row-block">
+        <div class="row">
+          <input type="button" class="small" value="7" data-type="value" />
+          <input type="button" class="small" value="8" data-type="value" />
+          <input type="button" class="small" value="9" data-type="value" />
+        </div>
+        <div class="row">
+          <input type="button" class="small" value="4" data-type="value" />
+          <input type="button" class="small" value="5" data-type="value" />
+          <input type="button" class="small" value="6" data-type="value" />
+        </div>
+        <div class="row">
+          <input type="button" class="small" value="1" data-type="value" />
+          <input type="button" class="small" value="2" data-type="value" />
+          <input type="button" class="small" value="3" data-type="value" />
+        </div>  
+        <div class="row">
+          <input type="button" class="double-x" value="0" data-type="value" />
+          <input type="button" class="small" value="." data-type="value" />
+        </div>
+      </div>
+        <div class="y-row">
+          <input type="button" class="small" value="-" id="subtract" data-type="operator" />
+          <input type="button" class="small" value="+" id="divide" data-type="operator" />
+          <input type="button" class="double-y" value="=" data-type="command" />
+        </div>
+    </div>
+    <script src="js/calculator.js"></script>
 
 <h3>
 <a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Heading</h3>
