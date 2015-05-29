@@ -61,79 +61,88 @@
         <h3>
 <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to My Page.</h3>
 
-    <head>
-        <title>Calculator - A jquery-plugin</title>
-        <meta charset="UTF-8">
-        <link type="text/css" rel="stylesheet" media="all" href="style.css" />
-        <link type="text/css" rel="stylesheet" media="all" href="css/sunny/jquery-ui-1.8.16.custom.css" />
-        <link type="text/css" rel="stylesheet" media="all" href="mathquill/mathquill.css" />
-        <script type="text/javascript" src="jquery.min.js"></script>
-        <script type="text/javascript" src="jquery-ui-1.8.16.custom.min.js"></script>
-        <script type="text/javascript" src="calculator.js"></script>
-        <script type="text/javascript" src="mathquill/mathquill.js"></script>
-        <script type="text/javascript">
-            jQuery(function(){
-                jQuery('#box1').calculator();
-                jQuery('#calcbutton').button().click(function(){
-                    jQuery('#box2').calculator().dialog({width: 310});
-                });
-            });
-        </script>
-    </head>
-    <body>
-        <header>
-            <div id="head-content">
-                <img id="logo" src="images/emath-logo.png" alt="E-Math" />
-                <h1>Calculator</h1>
-                <h2>Handheld calculator</h2>
-            </div>
-        </header>
-        <a href="https://github.com/e-math/calculator"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
-        <article class="content">
-            <h2>Example 1 (embedded)</h2>
-            <p>Here is an example, how to use <code>calculator.js</code> to create an embedded calculator.</p>
-            <div class="codewrapper">
-<div class="codeexample">
-&lt;div class="box"&gt;
-&lt;/div&gt;
-&lt;script type="text/javascript"&gt;
-    jQuery('#box1').calculator();
-&lt;/script&gt;
-</div>
-            </div>
-            <div id="box1"></div>
-            <h2>Example 2 (windowed)</h2>
-            <p>Another example shows, how to create a calculator inside a draggable window
-            with jQuery-ui.</p>
-            <div class="codewrapper">
-<div class="codeexample">
-&lt;div class="box"&gt;
-&lt;/div&gt;
-&lt;script type="text/javascript"&gt;
-    jQuery('#box2').calculator().dialog({width: 310});
-&lt;/script&gt;
-</div>
-            </div>
-            <p>Click the button to open calculator in a jQuery-ui dialog.</p>
-            <p>
-                <button id="calcbutton">Calculator</button>
-                <div id="box2"></div>
-            </p>
-        </article>
-        <footer>
-            <div id="disclaimerbox">
-                <div id="leftlogo">
-                    <img src="images/CB_logo-200.png" alt="" />
-                </div>
-                <div id="rightlogo">
-                    <img src="images/EU_with_references-300.png" alt="" />
-                </div>
-                <div id="disclaimer">
-                    The contents of the website reflect the authors' views. The Managing Authority of the Central Baltic INTERREG IVA Programme cannot be held liable for the information published by the project partners. 
-                </div>
-            </div>
-        </footer>
-    </body>
+class Dashing.Myclock extends Dashing.Widget
+  #CONSTANTS
+  size = 286
+  pi = Math.PI
+  radius = size/2
+  hourL = 0.5*radius
+  minuteL = 0.75*radius
+  secondL = 0.9*radius
+  
+  ready: ->
+    setInterval(@drawTime,1000)
+ 
+  drawTime: =>
+    #CLEAN
+    $(@node).children("canvas").remove()
+ 
+    #CURRENT TIME
+    today = new Date()
+    h = today.getHours()
+    m = today.getMinutes()
+    s = today.getSeconds()
+ 
+    #CREATE CANVAS
+    canvas = document.createElement('canvas')
+    canvas.setAttribute('height',size)
+    canvas.setAttribute('width',size)
+    $(@node).append(canvas)
+    content = canvas.getContext '2d'
+    content.translate(radius,radius)
+ 
+    #DRAW BACKGROUND
+    content.beginPath()
+    content.arc(0, 0, radius, 0, 2*pi, false)
+    content.closePath()
+    content.fillStyle = '#cccccc'
+    content.fill()
+    
+    #draw numbers
+    content.font = '12px Arial'
+    content.fillStyle = '#000'
+    content.textAlign = 'center'
+    content.textBaseline = 'middle'
+    n = 1
+    while n <= 12
+      theta = (n - 3) * pi * 2 / 12
+      x = radius * 0.9 * Math.cos(theta)
+      y = radius * 0.9 * Math.sin(theta)
+      content.fillText n, x, y
+      n++
+ 
+    #draw second
+    content.lineWidth='4'
+    content.strokeStyle='rgb(255,0,0)'
+    content.lineCap='round'
+    content.beginPath()
+    content.moveTo(0,0)
+    alpha = (s-15)*pi*2/60
+    content.lineTo(secondL*Math.cos(alpha),secondL*Math.sin(alpha))
+    content.stroke()
+ 
+    #draw minute
+    content.strokeStyle='rgb(0,0,0)'
+    content.lineWidth='6'
+    content.lineCap='round'
+    content.beginPath()
+    content.moveTo(0,0)
+    beta = (m-15)*pi*2/60
+    content.lineTo(minuteL*Math.cos(beta),minuteL*Math.sin(beta))
+    content.stroke()
+ 
+    #draw hour
+    content.lineWidth='8'
+    content.lineCap='round'
+    content.beginPath()
+    content.moveTo(0,0)
+    #Jumping Hours:
+    #gamma = (h-3)*pi*2/12
+    #Smooth Hours:
+    #gamma = ((h-3)+(m/60))*pi*2/12
+    gamma = ((h-3)+(m/60))*pi*2/12
+    content.lineTo(hourL*Math.cos(gamma),hourL*Math.sin(gamma))
+    content.stroke()
 
 <h3>
 <a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Heading</h3>
