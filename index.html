@@ -61,59 +61,79 @@
         <h3>
 <a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Welcome to My Page.</h3>
 
-<div class="media">
-  <div class="media-left">
-    <a href="#">
-      <img class="media-object" src="..." alt="...">
-    </a>
-  </div>
-  <div class="media-body">
-    <h4 class="media-heading">Media heading</h4>
-<head>
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
-    <title>Calculator</title>
-    <link rel="stylesheet" href="style/calculator.css"/>
-  </head>
-  <body>
-    <div id="display"><div></div></div>
-    <div id="panel">
-      <div class="x-row">
-        <input type="button" class="double-x" value="C" data-type="command" />
-        <input type="button" class="small" value="÷" id="add" data-type="operator" />
-        <input type="button" class="small" value="×" id="multiply" data-type="operator" />
-      </div>
-      <div class="row-block">
-        <div class="row">
-          <input type="button" class="small" value="7" data-type="value" />
-          <input type="button" class="small" value="8" data-type="value" />
-          <input type="button" class="small" value="9" data-type="value" />
-        </div>
-        <div class="row">
-          <input type="button" class="small" value="4" data-type="value" />
-          <input type="button" class="small" value="5" data-type="value" />
-          <input type="button" class="small" value="6" data-type="value" />
-        </div>
-        <div class="row">
-          <input type="button" class="small" value="1" data-type="value" />
-          <input type="button" class="small" value="2" data-type="value" />
-          <input type="button" class="small" value="3" data-type="value" />
-        </div>  
-        <div class="row">
-          <input type="button" class="double-x" value="0" data-type="value" />
-          <input type="button" class="small" value="." data-type="value" />
-        </div>
-      </div>
-        <div class="y-row">
-          <input type="button" class="small" value="-" id="subtract" data-type="operator" />
-          <input type="button" class="small" value="+" id="divide" data-type="operator" />
-          <input type="button" class="double-y" value="=" data-type="command" />
-        </div>
-    </div>
-    <script src="js/calculator.js"></script>
-  </body>
-  </div>
+    <head>
+        <title>Calculator - A jquery-plugin</title>
+        <meta charset="UTF-8">
+        <link type="text/css" rel="stylesheet" media="all" href="style.css" />
+        <link type="text/css" rel="stylesheet" media="all" href="css/sunny/jquery-ui-1.8.16.custom.css" />
+        <link type="text/css" rel="stylesheet" media="all" href="mathquill/mathquill.css" />
+        <script type="text/javascript" src="jquery.min.js"></script>
+        <script type="text/javascript" src="jquery-ui-1.8.16.custom.min.js"></script>
+        <script type="text/javascript" src="calculator.js"></script>
+        <script type="text/javascript" src="mathquill/mathquill.js"></script>
+        <script type="text/javascript">
+            jQuery(function(){
+                jQuery('#box1').calculator();
+                jQuery('#calcbutton').button().click(function(){
+                    jQuery('#box2').calculator().dialog({width: 310});
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <header>
+            <div id="head-content">
+                <img id="logo" src="images/emath-logo.png" alt="E-Math" />
+                <h1>Calculator</h1>
+                <h2>Handheld calculator</h2>
+            </div>
+        </header>
+        <a href="https://github.com/e-math/calculator"><img style="position: absolute; top: 0; left: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png" alt="Fork me on GitHub"></a>
+        <article class="content">
+            <h2>Example 1 (embedded)</h2>
+            <p>Here is an example, how to use <code>calculator.js</code> to create an embedded calculator.</p>
+            <div class="codewrapper">
+<div class="codeexample">
+&lt;div class="box"&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+    jQuery('#box1').calculator();
+&lt;/script&gt;
 </div>
+            </div>
+            <div id="box1"></div>
+            <h2>Example 2 (windowed)</h2>
+            <p>Another example shows, how to create a calculator inside a draggable window
+            with jQuery-ui.</p>
+            <div class="codewrapper">
+<div class="codeexample">
+&lt;div class="box"&gt;
+&lt;/div&gt;
+&lt;script type="text/javascript"&gt;
+    jQuery('#box2').calculator().dialog({width: 310});
+&lt;/script&gt;
+</div>
+            </div>
+            <p>Click the button to open calculator in a jQuery-ui dialog.</p>
+            <p>
+                <button id="calcbutton">Calculator</button>
+                <div id="box2"></div>
+            </p>
+        </article>
+        <footer>
+            <div id="disclaimerbox">
+                <div id="leftlogo">
+                    <img src="images/CB_logo-200.png" alt="" />
+                </div>
+                <div id="rightlogo">
+                    <img src="images/EU_with_references-300.png" alt="" />
+                </div>
+                <div id="disclaimer">
+                    The contents of the website reflect the authors' views. The Managing Authority of the Central Baltic INTERREG IVA Programme cannot be held liable for the information published by the project partners. 
+                </div>
+            </div>
+        </footer>
+    </body>
 
 <h3>
 <a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Heading</h3>
